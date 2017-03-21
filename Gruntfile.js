@@ -73,8 +73,7 @@ module.exports = function(grunt) {
       // uncss - удаляем неиспользованные css свойства (использовать перед минификацией иначе не работает)
       uncss: {
           dist: {
-              files: {'assets/css/<%= pkg.name %>-style.css':'index.html'
-              },
+              src: ['about.html', 'index.html', 'page.html', 'contacts.html'],
               ignore: ['/.col-([a-zA-Z0-9]+)-([a-zA-Z0-9]+)/g', '.visible', '.hidden', '.fade', '.fade.in',
                   '.collapse', '.collapse.in', '.collapsing', '/\.open/',
                   '.bs.carousel',
@@ -127,6 +126,7 @@ module.exports = function(grunt) {
                   '.fa-angle-down.open' ],
               media: ['(min-width: 320px) handheld and (orientation: landscape)'],
               ignoreSheets: ['/fonts.googleapis/'],
+              dest: 'assets/css/<%= pkg.name %>-style.min.css',
               options: {
                   report: 'gzip'
               }
@@ -356,7 +356,7 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'copy', 'sass', 'concat', 'uncss', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'pug', 'usemin', 'usebanner']);
+  grunt.registerTask('default', ['clean', 'copy', 'sass', 'concat', 'pug', 'uncss', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'pug']);
   grunt.registerTask('server', ['clean', 'pug', 'copy', 'sass', 'concat', 'uncss', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'pug', 'usemin', 'usebanner']);
 
 };
