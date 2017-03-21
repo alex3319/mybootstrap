@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'app/views',
           src: '*.pug',
-          dest: 'app',
+          dest: 'dist/assets',
           expand: true,
           ext: '.html'
         }]
@@ -214,6 +214,23 @@ module.exports = function(grunt) {
       }
     },
 
+    connect: {
+      server: {
+          options: {
+              port: 3000,
+              livereload: 35729,
+              hostname: 'localhost',
+              base: ['build']
+          },
+          livereload: {
+              options: {
+                  open:true,
+                  base: ['build']
+              }
+          }
+      }
+    },
+
     // usemin
     usemin: {
       html: ['dist/*.html']
@@ -283,6 +300,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-banner');
+  grunt.loadNpmTasks('grunt-livereload');
 
   // javascript linting
   grunt.registerTask('lint', ['jshint']);
