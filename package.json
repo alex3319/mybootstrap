@@ -1,0 +1,26 @@
+{
+  "name": "bootstrap-grunt-sass-pug",
+  "version": "1.0.1",
+  "description": "frontend scaffold bootstrap grunt sass pug",
+  "main": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aung",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.1",
+    "grunt": "^1.0.1",
+    "grunt-banner": "^0.6.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-usemin": "^3.1.1"
+  }
+}

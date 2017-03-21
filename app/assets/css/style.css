@@ -1,0 +1,15 @@
+.supeclass {
+  background: #ff3;
+}
+
+.supeclass {
+  background: #ff0;
+  color: red;
+  font-size: 22px;
+  line-height: normal;
+}
+.supeclass a {
+  color: #f02;
+}
+
+/*# sourceMappingURL=style.css.map */
