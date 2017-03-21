@@ -39,8 +39,8 @@ Thumbs.db
 # Dependencies #
 ################
 node_modules/
-bower_components/
 .idea/
+.idea/*
 
 # CSS #
 ################
