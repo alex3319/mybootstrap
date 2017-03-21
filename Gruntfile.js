@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           {
             cwd: './',
             expand: true,
-            src: ['app/*.html'],
+            src: ['*.html'],
             flatten: true,
             dest: ''
           }
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'app/views',
           src: '*.pug',
-          dest: 'assets',
+          dest: '.',
           expand: true,
           ext: '.html'
         }]
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
     // uncss
     uncss: {
         dist: {
-            src: ['app/about.html', 'app/index.html', 'app/page.html', 'app/contacts.html'],
+            src: ['about.html', 'index.html', 'page.html', 'contacts.html'],
             ignore: ['/.col-([a-zA-Z0-9]+)-([a-zA-Z0-9]+)/g', '.visible', '.hidden', '.fade', '.fade.in',
                     '.collapse', '.collapse.in', '.collapsing', '/\.open/',
             '.bs.carousel',
