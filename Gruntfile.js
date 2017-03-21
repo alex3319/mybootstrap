@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // clean dist directory
-    clean: ['dist/**/*'],
+    clean: ['css/*', 'img/*', 'js/*', 'fonts/*'],
 
     // copy html and assets
     copy: {
@@ -16,21 +16,21 @@ module.exports = function(grunt) {
             cwd: 'app/assets/img/',
             expand: true,
             src: ['**'],
-            dest: 'dist/assets/img/'
+            dest: 'assets/img/'
           },
           {
             cwd: './',
             expand: true,
             src: ['bower_components/bootstrap/dist/fonts/*', 'app/assets/fonts/*'],
             flatten: true,
-            dest: 'dist/assets/fonts/'
+            dest: 'assets/fonts/'
           },
           {
             cwd: './',
             expand: true,
             src: ['app/assets/js/app.js'],
             flatten: true,
-            dest: 'dist/assets/js/',
+            dest: 'assets/js/',
             rename: function(dest, src) {
               return dest + src.replace('app','<%= pkg.name %>-app');
             }
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
             expand: true,
             src: ['app/*.html'],
             flatten: true,
-            dest: 'dist/'
+            dest: ''
           }
         ]
       }
@@ -56,14 +56,14 @@ module.exports = function(grunt) {
           'bower_components/jquery/dist/jquery.js',
           'bower_components/bootstrap/dist/js/bootstrap.js'
         ],
-        dest: 'dist/assets/js/<%= pkg.name %>-components.js'
+        dest: 'assets/js/<%= pkg.name %>-components.js'
       },
       css: {
         src: [
           'bower_components/bootstrap/dist/css/bootstrap.css',
           'app/assets/css/style.css'
         ],
-        dest: 'dist/assets/css/<%= pkg.name %>-style.css'
+        dest: 'assets/css/<%= pkg.name %>-style.css'
       }
     },
 
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'app/views',
           src: '*.pug',
-          dest: 'dist/assets',
+          dest: 'assets',
           expand: true,
           ext: '.html'
         }]
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
       },
       target: {
         files: {
-          'dist/assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
+          'assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
         }
       }
     },
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
     uncss: {
         dist: {
             src: ['app/about.html', 'app/index.html', 'app/page.html', 'app/contacts.html'],
-            dest: 'dist/assets/css/<%= pkg.name %>-style.min.css',
+            dest: 'assets/css/<%= pkg.name %>-style.min.css',
             options: {
                 report: 'min'
             }
@@ -147,10 +147,10 @@ module.exports = function(grunt) {
                     // Set to true to enable the following options…
                     expand: true,
                     // cwd is 'current working directory'
-                    cwd: 'app/assets/img/',
+                    cwd: 'assets/img/',
                     src: ['**/*.png'],
                     // Could also match cwd line above. i.e. project-directory/img/
-                    dest: 'dist/assets/img/',
+                    dest: 'assets/img/',
                     ext: '.png'
                 }
             ]
@@ -167,7 +167,7 @@ module.exports = function(grunt) {
                     cwd: 'app/assets/img/',
                     src: ['**/*.jpg'],
                     // Could also match cwd. i.e. project-directory/img/
-                    dest: 'dist/assets/img/',
+                    dest: 'assets/img/',
                     ext: '.jpg'
                 }
             ]
@@ -183,8 +183,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/assets/js/<%= pkg.name %>-components.min.js': ['<%= concat.js.dest %>'],
-          'dist/assets/js/<%= pkg.name %>-app.min.js': ['app/assets/js/app.js']
+          'assets/js/<%= pkg.name %>-components.min.js': ['<%= concat.js.dest %>'],
+          'assets/js/<%= pkg.name %>-app.min.js': ['app/assets/js/app.js']
         }
       }
     },
@@ -233,7 +233,7 @@ module.exports = function(grunt) {
 
     // usemin
     usemin: {
-      html: ['dist/*.html']
+      html: ['*.html']
     },
 
     // jshint
@@ -258,7 +258,7 @@ module.exports = function(grunt) {
           linebreak: true
         },
         files: {
-          src: [ 'dist/assets/js/*.js' ]
+          src: [ 'assets/js/*.js' ]
         }
       },
       cssVersion: {
@@ -268,7 +268,7 @@ module.exports = function(grunt) {
           linebreak: true
         },
         files: {
-          src: [ 'dist/assets/css/*.css' ]
+          src: [ 'assets/css/*.css' ]
         }
       },
       htmlVersion: {
@@ -278,7 +278,7 @@ module.exports = function(grunt) {
           linebreak: true
         },
         files: {
-          src: [ 'dist/*.html' ]
+          src: [ '*.html' ]
         }
       }
     }
