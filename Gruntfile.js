@@ -109,6 +109,7 @@ module.exports = function(grunt) {
       }
     },
 
+
     // minify css
     cssmin: {
       options: {
@@ -120,6 +121,17 @@ module.exports = function(grunt) {
           'dist/assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
         }
       }
+    },
+
+    // uncss
+    uncss: {
+        dist: {
+            src: ['app/about.html', 'app/index.html', 'app/page.html', 'app/contacts.html'],
+            dest: 'dist/assets/css/<%= pkg.name %>-style.min.css',
+            options: {
+                report: 'min'
+            }
+        }
     },
 
     // imagemin
@@ -264,6 +276,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-usemin');
@@ -273,5 +286,5 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'pug', 'concat', 'cssmin', 'imagemin', 'uglify', 'copy', 'usemin', 'usebanner']);
+  grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'pug', 'concat', 'cssmin',  'uglify', 'copy', 'imagemin', 'uncss', 'usemin', 'usebanner']);
 };
