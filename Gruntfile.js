@@ -122,6 +122,45 @@ module.exports = function(grunt) {
       }
     },
 
+    // imagemin
+    imagemin: {
+        png: {
+            options: {
+                optimizationLevel: 7
+            },
+            files: [
+                {
+                    // Set to true to enable the following options…
+                    expand: true,
+                    // cwd is 'current working directory'
+                    cwd: 'app/assets/img/',
+                    src: ['**/*.png'],
+                    // Could also match cwd line above. i.e. project-directory/img/
+                    dest: 'dist/assets/img/',
+                    ext: '.png'
+                }
+            ]
+        },
+        jpg: {
+            options: {
+                progressive: true
+            },
+            files: [
+                {
+                    // Set to true to enable the following options…
+                    expand: true,
+                    // cwd is 'current working directory'
+                    cwd: 'app/assets/img/',
+                    src: ['**/*.jpg'],
+                    // Could also match cwd. i.e. project-directory/img/
+                    dest: 'dist/assets/img/',
+                    ext: '.jpg'
+                }
+            ]
+        }
+    },
+
+
     // minify js
     uglify: {
       options: {
@@ -225,6 +264,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-banner');
@@ -233,5 +273,5 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'pug', 'concat', 'cssmin', 'uglify', 'copy', 'usemin', 'usebanner']);
+  grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'pug', 'concat', 'cssmin', 'imagemin', 'uglify', 'copy', 'usemin', 'usebanner']);
 };
