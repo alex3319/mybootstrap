@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+
+  require('time-grunt')(grunt);
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
