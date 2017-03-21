@@ -12628,3 +12628,7 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
+;/**
+ * Created by aronix on 21.03.17.
+ */
+var a = 10;
