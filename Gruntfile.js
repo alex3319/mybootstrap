@@ -95,6 +95,20 @@ module.exports = function(grunt) {
       }
     },
 
+    // autoprefixer
+    autoprefixer:{
+      options: {
+          browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
+          cascade: false
+      },
+      multiple_files: {
+          expand: true,
+          flatten: true,
+          src: 'app/assets/css/*.css',
+          dest: 'app/assets/css/'
+      }
+    },
+
     // minify css
     cssmin: {
       options: {
@@ -207,6 +221,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -218,5 +233,5 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'sass', 'pug', 'concat', 'cssmin', 'uglify', 'copy', 'usemin', 'usebanner']);
+  grunt.registerTask('default', ['clean', 'sass', 'autoprefixer', 'pug', 'concat', 'cssmin', 'uglify', 'copy', 'usemin', 'usebanner']);
 };

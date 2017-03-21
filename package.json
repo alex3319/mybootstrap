@@ -22,5 +22,8 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-usemin": "^3.1.1"
+  },
+  "dependencies": {
+    "grunt-autoprefixer": "^3.0.4"
   }
 }
