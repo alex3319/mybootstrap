@@ -11,7 +11,6 @@ module.exports = function(grunt) {
       // copy Копируем все шрифты и js (юзер бутстрап и юзер js) в assets
     copy: {
       main: {
-<<<<<<< HEAD
           files: [
               {
                   cwd: './',
@@ -31,40 +30,6 @@ module.exports = function(grunt) {
                   }
               }
           ]
-=======
-        files: [
-          {
-            cwd: 'app/assets/img/',
-            expand: true,
-            src: ['**'],
-            dest: 'assets/img/'
-          },
-          {
-            cwd: './',
-            expand: true,
-            src: ['bower_components/bootstrap/dist/fonts/*', 'app/assets/fonts/*'],
-            flatten: true,
-            dest: 'assets/fonts/'
-          },
-          {
-            cwd: './',
-            expand: true,
-            src: ['app/assets/js/app.js'],
-            flatten: true,
-            dest: 'assets/js/',
-            rename: function(dest, src) {
-              return dest + src.replace('app','<%= pkg.name %>-app');
-            }
-          },
-          {
-            cwd: './',
-            expand: true,
-            src: ['*.html'],
-            flatten: true,
-            dest: ''
-          }
-        ]
->>>>>>> 69520eeb70f1640de07c52ff7d998b16829ed5be
       }
     },
 
@@ -104,38 +69,6 @@ module.exports = function(grunt) {
       }
     },
 
-<<<<<<< HEAD
-=======
-    // pug
-    pug: {
-      compile: {
-        options: {
-          client: false,
-          pretty: true,
-          data: grunt.file.readJSON('app/data/data.json')
-        },
-        files: [{
-          cwd: 'app/views',
-          src: '*.pug',
-          dest: '.',
-          expand: true,
-          ext: '.html'
-        }]
-      }
-    },
-
-    // sass
-    sass: {
-      dist: {
-        options: {
-          style: 'expanded'
-        },
-        files: {
-          'app/assets/css/style.css': 'app/sass/main.sass'
-        }
-      }
-    },
->>>>>>> 69520eeb70f1640de07c52ff7d998b16829ed5be
 
       // uncss - удаляем неиспользованные css свойства (использовать перед минификацией иначе не работает)
       uncss: {
@@ -214,7 +147,6 @@ module.exports = function(grunt) {
           }
       },
 
-<<<<<<< HEAD
       // minify css - Далее минифицируем (переменная сорс ссылается на dest модуля concat секции css (это наш tmp))
       cssmin: {
           options: {
@@ -239,70 +171,6 @@ module.exports = function(grunt) {
               }
           }
       },
-=======
-    // uncss
-    uncss: {
-        dist: {
-            src: ['about.html', 'index.html', 'page.html', 'contacts.html'],
-            ignore: ['/.col-([a-zA-Z0-9]+)-([a-zA-Z0-9]+)/g', '.visible', '.hidden', '.fade', '.fade.in',
-                    '.collapse', '.collapse.in', '.collapsing', '/\.open/',
-            '.bs.carousel',
-            '.slid.bs.carousel',
-            '.slide.bs.carousel',
-            '.fade',
-            '.fade.in',
-            '.collapse',
-            '.collapse.in',
-            '.collapsing',
-            '.alert-danger',
-            '.logged-in .navbar-default',
-            '.carousel-inner > .next',
-            '.carousel-inner > .prev',
-            '.carousel-inner > .next',
-            '.carousel-inner > .prev',
-            '.carousel-inner > .next.left',
-            '.carousel-inner > .prev.right',
-            '.carousel-inner > .active.left',
-            '.carousel-inner > .active.right',
-            '#float-toc',
-            '#float-toc a',
-            '.modal-content',
-            '.modal-header',
-            '.modal-body',
-            '.modal-dialog',
-            '.modal.fade.in',
-            '.modal-open',
-            /(#|\.)modal(\-[a-zA-Z]+)?/,
-            '.navbar-toggle.open',
-            '.fade .modal-dialog',
-            '.navbar-collapse.in',
-            '.navbar-fixed-top',
-            '.logged-in .navbar-fixed-top',
-            '.navbar-collapse',
-            '.navbar-collapse.in',
-            '.navbar-inverse .innovations.navbar-toggle.open',
-            '.single-innovation .navbar-inverse .innovations.navbar-toggle.open',
-            '#innovations.collapse.in',
-            'ul.page-numbers li a.prev',
-            '.open',
-            '.open > .dropdown-menu',
-            '.open > a',
-            '.alert-danger',
-            '.visible-xs',
-            '.noscript-warning',
-            '.close',
-            '.alert-dismissible',
-            '.page.calendar .events .panel:hover .fa-angle-down.open',
-            '.fa-angle-down.open' ],
-            media: ['(min-width: 320px) handheld and (orientation: landscape)'],
-            ignoreSheets: ['/fonts.googleapis/'],
-            dest: 'assets/css/<%= pkg.name %>-style.min.css',
-            options: {
-                report: 'min'
-            }
-        }
-    },
->>>>>>> 69520eeb70f1640de07c52ff7d998b16829ed5be
 
     // imagemin
     imagemin: {
