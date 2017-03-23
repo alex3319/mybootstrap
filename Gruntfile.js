@@ -63,11 +63,41 @@ module.exports = function(grunt) {
       css: {
         src: [
           'bower_components/bootstrap/dist/css/bootstrap.css',
+          'bower_components/bootstrap/dist/css/bootstrap-theme.css',
+          'bower_components/bootstrap/dist/css/bootstrap-theme.css',
           'app/tmp/css/style.css'
         ],
         dest: 'assets/css/<%= pkg.name %>-style.css'
       }
     },
+
+
+      // autoprefixer - добавляем все префиксы
+      autoprefixer:{
+          options: {
+              browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
+              cascade: false
+          },
+          multiple_files: {
+              expand: true,
+              flatten: true,
+              src: 'assets/css/*',
+              dest: 'assets/css/'
+          }
+      },
+
+      // minify css - Далее минифицируем (переменная сорс ссылается на dest модуля concat секции css (это наш tmp))
+      cssmin: {
+          options: {
+              shorthandCompacting: false,
+              roundingPrecision: -1
+          },
+          target: {
+              files: {
+                  'assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
+              }
+          }
+      },
 
 
       // uncss - удаляем неиспользованные css свойства (использовать перед минификацией иначе не работает)
@@ -126,39 +156,13 @@ module.exports = function(grunt) {
                   '.fa-angle-down.open' ],
               media: ['(min-width: 320px) handheld and (orientation: landscape)'],
               ignoreSheets: ['/fonts.googleapis/'],
-              dest: 'assets/css/<%= pkg.name %>-style.min.css',
+              dest: 'assets/css/<%= pkg.name %>-style.css',
               options: {
                   report: 'gzip'
               }
           }
       },
 
-      // autoprefixer - добавляем все префиксы
-      autoprefixer:{
-          options: {
-              browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
-              cascade: false
-          },
-          multiple_files: {
-              expand: true,
-              flatten: true,
-              src: 'assets/css/*.css',
-              dest: 'assets/css/'
-          }
-      },
-
-      // minify css - Далее минифицируем (переменная сорс ссылается на dest модуля concat секции css (это наш tmp))
-      cssmin: {
-          options: {
-              shorthandCompacting: false,
-              roundingPrecision: -1
-          },
-          target: {
-              files: {
-                  'assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
-              }
-          }
-      },
       // minify js
       uglify: {
           options: {
@@ -250,8 +254,8 @@ module.exports = function(grunt) {
           ]
       },
       css: {
-        files: ['app/sass/components/*.{sass,scss}','app/sass/*.{sass,scss}'],
-        tasks: ['sass']
+        files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}'],
+        tasks: ['sass', 'concat', 'autoprefixer', 'cssmin', 'uncss'] //
       },
       pug: {
         files: 'app/views/**/*.pug',
