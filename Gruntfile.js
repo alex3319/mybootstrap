@@ -246,12 +246,16 @@ module.exports = function(grunt) {
       },
       scripts: {
           files: [
-              'app/assets/*.js'
+              'app/assets/js/*.js',
           ],
           tasks: [
               'jshint',
               'uglify'
           ]
+      },
+      img: {
+        files: ['app/assets/img/*.{img,png'],
+        tasks: ['imagemin'] //
       },
       css: {
         files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}'],
@@ -280,10 +284,18 @@ module.exports = function(grunt) {
       }
     },
 
-    // usemin
-    usemin: {
-      html: ['*.html']
-    },
+      htmlmin: {                                     // Task
+          dist: {                                      // Target
+              options: {                                 // Target options
+                  removeComments: true,
+                  collapseWhitespace: true
+              },
+              files: {                                   // Dictionary of files
+                  'index.html': 'index.html',     // 'destination': 'source'
+                  'contact.html': 'contact.html'
+              }
+          }
+      },
 
     // jshint
     jshint: {
@@ -350,18 +362,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-livereload');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
 
-  //Запустить при первом запуске - иначе ошибку выдаст UNCSS!
-  grunt.registerTask('start', ['pug']);
 
   // javascript linting
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'copy', 'sass', 'concat', 'pug', 'uncss', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'pug']);
-  grunt.registerTask('server', ['clean', 'pug', 'copy', 'sass', 'concat', 'uncss', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'pug', 'usemin', 'usebanner']);
+  grunt.registerTask('default', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'usemin']);
+  grunt.registerTask('server', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'usemin', 'htmlmin']);
 
 };
 //
