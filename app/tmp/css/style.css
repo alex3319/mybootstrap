@@ -17,14 +17,6 @@ html, body {
   overflow-x: hidden;
 }
 
-body {
-  padding-top: 70px;
-}
-
-footer {
-  padding: 30px 0;
-}
-
 /* Off Canvas
  * --------------------------------------------------
  */
@@ -66,8 +58,91 @@ footer {
     width: 50%;
   }
 }
-a {
-  color: #dff2d2;
+body {
+  padding-top: 0;
 }
+
+footer {
+  padding: 0;
+}
+
+a {
+  color: #2b542c;
+}
+
+/*BUTTONS */
+.my_btn {
+  background-color: #e84545;
+  border: none;
+  text-transform: uppercase;
+}
+
+.my_btn__titleparams {
+  padding: 10px 30px;
+}
+
+header {
+  height: 680px;
+  background-image: url(../img/banner.jpg);
+  background-size: cover;
+}
+
+nav {
+  height: 94px;
+  line-height: 94px;
+  padding: 0;
+  margin: 0;
+}
+nav .menu {
+  list-style-type: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+nav .menu li {
+  display: inline-block;
+  padding: 0 30px;
+}
+nav .menu li a {
+  color: #fff;
+  text-transform: uppercase;
+}
+nav .menu li a:hover, nav .menu li a:focus {
+  text-decoration: none;
+  color: #e1e1e1;
+}
+
+.top_line {
+  height: 1px;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  padding-top: 35px;
+}
+
+.title_block {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 100px;
+}
+.title_block h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+.title_block p {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

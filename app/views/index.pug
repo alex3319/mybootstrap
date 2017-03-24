@@ -1,27 +1,44 @@
 extends templates/layout.pug
 block content
 
+  header
+    nav
+      .container
+        .row
+          .navbar-header
+            btn.navbar-toggle.collapsed.menu_btn(type='button' data-toggle="collapse" data-target='#top_menu') menu
 
-  nav.navbar.navbar-fixed-top.navbar-inverse
+            a.navbar-brand.logo(href='#')
+              img(src='/assets/img/logo.png')
+
+          .collapse.navbar-collapse.navbar-right#top_menu
+            ul.menu
+              li
+                a(href="#") Home
+              li
+                a(href="#") Page1
+              li
+                a(href="#") Page2
+              li
+                a(href="#") Page3
+              li
+                a(href="#") Contacts
+
+        .top_line
+
     .container
-      .navbar-header
-        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href='#') Project name
-      #navbar.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li.active
-            a(href='#') Hom
-          li
-            a(href='#about') About
-          li
-            a(href='#contact') Contact
-      // /.nav-collapse
-    // /.container
-  // /.navbar
+      .row
+        .col-md-8.col-md-offset-2
+          .title_block
+            h1 Заголовок
+            p Душа sfdgsfgasdfghj ена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я.
+            button.my_btn.my_btn__titleparams Найти позже
+
+
+
+
+
+
   .container
     .row.row-offcanvas.row-offcanvas-right
       .col-xs-12.col-sm-9
