@@ -45,9 +45,23 @@ module.exports = function(grunt) {
         }
     },
 
+
+    csscomb: {
+      dist: {
+          options: {
+              config: 'app/assets/config/config.json'
+          },
+          files: {
+              'app/tmp/css/style.css': ['app/tmp/css/style.css']
+          }
+      }
+    },
+
+
       csslint: {
           strict: {
               options: {
+                  'order-alphabetical': 0, // Таким же образом можно отключить другие оповещения
                   import: 2
               },
               src: ['app/tmp/css/style.css']
@@ -268,7 +282,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}'],
-        tasks: ['sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'imagemin'] //
+        tasks: ['sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'imagemin', 'csslint'] //
       },
       pug: {
         files: 'app/views/**/*.pug',
@@ -371,6 +385,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-livereload');
+  grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
@@ -381,7 +396,7 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', ['jshint']);
 
   // default task
-  grunt.registerTask('default', ['clean', 'pug', 'sass', 'csslint', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin']);
+  grunt.registerTask('default', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
   grunt.registerTask('server', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
 
 };
