@@ -2,114 +2,51 @@ extends templates/layout.pug
 block content
 
   header
-    nav
+
+    nav.navbar.navbar-inverse.navbar-fixed-top
       .container
-        .row
-          .navbar-header
-            btn.navbar-toggle.collapsed.menu_btn(type='button' data-toggle="collapse" data-target='#top_menu') menu
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') Bootstrap theme
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='#') Home
+            li
+              a(href='#about') About
+            li
+              a(href='#contact') Contact
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Dropdown
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='#') Action
+                li
+                  a(href='#') Another action
+                li
+                  a(href='#') Something else here
+                li.divider(role='separator')
+                li.dropdown-header Nav header
+                li
+                  a(href='#') Separated link
+                li
+                  a(href='#') One more separated link
+        // /.nav-collapse
 
-            a.navbar-brand.logo(href='#')
-              img(src='/assets/img/logo.png')
-
-          .collapse.navbar-collapse.navbar-right#top_menu
-            ul.menu
-              li
-                a(href="#") Home
-              li
-                a(href="#") Page1
-              li
-                a(href="#") Page2
-              li
-                a(href="#") Page3
-              li
-                a(href="#") Contacts
-
-        .top_line
-
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .title_block
-            h1 Заголовок
-            p Душа sfdgsfgasdfghj ена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я.
-            button.my_btn.my_btn__titleparams Найти позже
 
 
 
 
 
-
-  .container
-    .row.row-offcanvas.row-offcanvas-right
-      .col-xs-12.col-sm-9
-        p.pull-right.visible-xs
-          button.btn.btn-primary.btn-xs(type='button', data-toggle='offcanvas') Toggle nav
-        .jumbotron
-          h1 Hello, World!
-          p
-            | This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.
-        .row
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-          .col-xs-6.col-lg-4
-            h2 Heading
-            p
-              | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-              a.btn.btn-default(href='#', role='button') View details »
-          // /.col-xs-6.col-lg-4
-        // /row
-      // /.col-xs-12.col-sm-9
-      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas
-        .list-group
-          a.list-group-item.active(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-          a.list-group-item(href='#') Link
-      // /.sidebar-offcanvas
-    // /row
-    hr
-    footer
-      p © 2016 Company, Inc.
+  hr
+  footer
+    p © 2017 Company, Inc.
 
 
 

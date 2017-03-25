@@ -282,7 +282,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}'],
-        tasks: ['sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'imagemin', 'csslint'] //
+        tasks: ['sass',  'concat', 'autoprefixer', 'cssmin', 'uncss', 'imagemin', 'csscomb', 'csslint'] //
       },
       pug: {
         files: 'app/views/**/*.pug',
