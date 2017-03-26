@@ -33,6 +33,32 @@ module.exports = function(grunt) {
       }
     },
 
+    less: {
+      compileCore: {
+          options: {
+              strictMath: true,
+              sourceMap: true,
+              outputSourceFiles: true,
+              sourceMapURL: 'bootstrap.css.map',
+              sourceMapFilename: 'bower_components/bootstrap/dist/css/bootstrap.css.map'
+          },
+          src: 'bower_components/bootstrap/less/bootstrap.less',
+          dest: 'bower_components/bootstrap/dist/css/bootstrap.css'
+      },
+
+      compileTheme: {
+          options: {
+              strictMath: true,
+              sourceMap: true,
+              outputSourceFiles: true,
+              sourceMapURL: 'bootstrap-theme.css.map',
+              sourceMapFilename: 'bower_components/bootstrap/dist/css/bootstrap-theme.css.map'
+          },
+          src: 'bower_components/bootstrap/less/theme.less',
+          dest: 'bower_components/bootstrap/dist/css/bootstrap-theme.css'
+      }
+    },
+
     // sass - Создаем пользовательский css в папке tmp
     sass: {
         dist: {
@@ -281,12 +307,12 @@ module.exports = function(grunt) {
         tasks: ['imagemin'] //
       },
       css: {
-        files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}'],
-        tasks: ['sass',  'concat', 'autoprefixer', 'cssmin', 'uncss', 'imagemin', 'csscomb', 'csslint'] //
+        files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}', 'bower_components/bootstrap/less/*.less', 'bower_components/bootstrap/less/mixins/*.less' ],
+        tasks: ['less-compile','sass',  'concat', 'autoprefixer', 'cssmin', 'uncss', 'csscomb', 'csslint'] //
       },
       pug: {
         files: 'app/views/**/*.pug',
-        tasks: ['pug', 'imagemin']
+        tasks: ['pug']
       }
     },
 
@@ -369,35 +395,36 @@ module.exports = function(grunt) {
 
   });
 
-  // load plugins
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-uncss');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-pug');
-  grunt.loadNpmTasks('grunt-usemin');
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-livereload');
-  grunt.loadNpmTasks('grunt-csscomb');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    // load plugins
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-uncss');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-pug');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-banner');
+    grunt.loadNpmTasks('grunt-livereload');
+    grunt.loadNpmTasks('grunt-csscomb');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
+    grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
 
+    // javascript linting
+    grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('lint', ['jshint']);
 
-  // javascript linting
-  grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('lint', ['jshint']);
-
-  // default task
-  grunt.registerTask('default', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
-  grunt.registerTask('server', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
+    // default task
+    grunt.registerTask('default', ['clean', 'pug', 'less-compile', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
+    grunt.registerTask('server', ['clean', 'pug', 'less-compile', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
 
 };
 //

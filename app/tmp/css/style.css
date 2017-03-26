@@ -58,7 +58,12 @@ body
 }
 body
 {
-    padding-top: 70px;
+    padding-top: 0;
+}
+
+.white
+{
+    color: #fff;
 }
 
 footer
