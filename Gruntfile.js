@@ -33,31 +33,7 @@ module.exports = function(grunt) {
       }
     },
 
-    less: {
-      compileCore: {
-          options: {
-              strictMath: true,
-              sourceMap: true,
-              outputSourceFiles: true,
-              sourceMapURL: 'bootstrap.css.map',
-              sourceMapFilename: 'bower_components/bootstrap/dist/css/bootstrap.css.map'
-          },
-          src: 'bower_components/bootstrap/less/bootstrap.less',
-          dest: 'bower_components/bootstrap/dist/css/bootstrap.css'
-      },
 
-      compileTheme: {
-          options: {
-              strictMath: true,
-              sourceMap: true,
-              outputSourceFiles: true,
-              sourceMapURL: 'bootstrap-theme.css.map',
-              sourceMapFilename: 'bower_components/bootstrap/dist/css/bootstrap-theme.css.map'
-          },
-          src: 'bower_components/bootstrap/less/theme.less',
-          dest: 'bower_components/bootstrap/dist/css/bootstrap-theme.css'
-      }
-    },
 
     // sass - Создаем пользовательский css в папке tmp
     sass: {
@@ -111,9 +87,6 @@ module.exports = function(grunt) {
       },
       css: {
         src: [
-          'bower_components/bootstrap/dist/css/bootstrap.css',
-          'bower_components/bootstrap/dist/css/bootstrap-theme.css',
-          'bower_components/bootstrap/dist/css/bootstrap-theme.css',
           'app/tmp/css/style.css'
         ],
         dest: 'assets/css/<%= pkg.name %>-style.css'
@@ -416,15 +389,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-    grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
+
 
     // javascript linting
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('lint', ['jshint']);
 
     // default task
-    grunt.registerTask('default', ['clean', 'pug', 'less-compile', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
-    grunt.registerTask('server', ['clean', 'pug', 'less-compile', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
+    grunt.registerTask('default', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
+    grunt.registerTask('server', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
 
 };
 //
