@@ -1,0 +1,49 @@
+.menu_params {
+	float: left;
+	font-size: 0;
+	padding: 0;
+	margin-left: 133px;
+}
+
+.menu__node_params {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 25px;
+	margin-right: 25px;
+	font-size: 20px;
+	list-style-type: none;
+}
+
+.menu__link_params {
+	color: #f0f;
+}
+
+.wrappers {
+	width: 320px;
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+
+.menu__link {
+	color: #f9f;
+}
+
+.wrappers {
+	width: 640px;
+}
+
+.wrappers {
+	height: 155px;
+}
+
+}
+
+@media (min-width: 1200px) {
+
+.wrappers {
+	width: 961px;
+}
+
+}
+

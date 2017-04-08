@@ -8,31 +8,6 @@ module.exports = function(grunt) {
     // clean dist directory
     clean: ['assets/css/*', 'assets/img/*', 'assets/js/*', 'assets/fonts/*', 'app/tmp/'],
 
-      // copy Копируем все шрифты и js (юзер бутстрап и юзер js) в assets
-    copy: {
-      main: {
-          files: [
-              {
-                  cwd: './',
-                  expand: true,
-                  src: ['bower_components/bootstrap/dist/fonts/*', 'app/assets/fonts/*'],
-                  flatten: true,
-                  dest: 'assets/fonts/'
-              },
-              {
-                  cwd: './',
-                  expand: true,
-                  src: ['app/assets/js/app.js'],
-                  flatten: true,
-                  dest: 'assets/js/',
-                  rename: function(dest, src) {
-                      return dest + src.replace('app','<%= pkg.name %>-app');
-                  }
-              }
-          ]
-      }
-    },
-
 
 
     // sass - Создаем пользовательский css в папке tmp
@@ -47,6 +22,30 @@ module.exports = function(grunt) {
         }
     },
 
+    stylus: {
+        compile: {
+            files: {
+                'app/tmp/css/style.css': ['app/assets/stylus/style.styl']
+            },
+            options: {
+                paths: ['app/assets/stylus/include'],
+                compress: false
+            }
+        },
+    },
+
+      cmq: {
+          options: {
+              log: false
+          },
+          your_target: {
+              files: {
+                  'app/tmp/css/': ['app/tmp/css/*.css']
+              }
+          }
+      },
+
+
 
     csscomb: {
       dist: {
@@ -54,7 +53,7 @@ module.exports = function(grunt) {
               config: 'app/assets/config/config.json'
           },
           files: {
-              'app/tmp/css/style.css': ['app/tmp/css/style.css']
+              'assets/css/style.css': ['assets/css/style.css']
           }
       }
     },
@@ -64,6 +63,9 @@ module.exports = function(grunt) {
           strict: {
               options: {
                   'order-alphabetical': 0, // Таким же образом можно отключить другие оповещения
+                  'universal-selector': 0, // Таким же образом можно отключить другие оповещения
+                  'outline-none': 0, // Таким же образом можно отключить другие оповещения
+                  'box-sizing': 0, // Таким же образом можно отключить другие оповещения
                   import: 2
               },
               src: ['app/tmp/css/style.css']
@@ -79,17 +81,17 @@ module.exports = function(grunt) {
           separator: ';'
         },
         src: [
-          'bower_components/jquery/dist/jquery.js',
-          'bower_components/bootstrap/dist/js/bootstrap.js',
+          'app/lib/js/html5shiv.min.js',
           'app/assets/js/app.js'
         ],
-        dest: 'app/tmp/js/<%= pkg.name %>-components.js'
+        dest: 'assets/js/concat-app.js'
       },
       css: {
         src: [
+          'app/lib/css/normalize.css',
           'app/tmp/css/style.css'
         ],
-        dest: 'assets/css/<%= pkg.name %>-style.css'
+        dest: 'assets/css/style.css'
       }
     },
 
@@ -116,74 +118,13 @@ module.exports = function(grunt) {
           },
           target: {
               files: {
-                  'assets/css/<%= pkg.name %>-style.min.css': ['<%= concat.css.dest %>']
+                  'assets/css/style.min.css': ['assets/css/style.css']
               }
           }
       },
 
 
-      // uncss - удаляем неиспользованные css свойства (использовать перед минификацией иначе не работает)
-      uncss: {
-          dist: {
-              src: ['about.html', 'index.html', 'page.html', 'contacts.html'],
-              ignore: ['/.col-([a-zA-Z0-9]+)-([a-zA-Z0-9]+)/g', '.visible', '.hidden', '.fade', '.fade.in',
-                  '.collapse', '.collapse.in', '.collapsing', '/\.open/',
-                  '.bs.carousel',
-                  '.slid.bs.carousel',
-                  '.slide.bs.carousel',
-                  '.fade',
-                  '.fade.in',
-                  '.collapse',
-                  '.collapse.in',
-                  '.collapsing',
-                  '.alert-danger',
-                  '.logged-in .navbar-default',
-                  '.carousel-inner > .next',
-                  '.carousel-inner > .prev',
-                  '.carousel-inner > .next',
-                  '.carousel-inner > .prev',
-                  '.carousel-inner > .next.left',
-                  '.carousel-inner > .prev.right',
-                  '.carousel-inner > .active.left',
-                  '.carousel-inner > .active.right',
-                  '#float-toc',
-                  '#float-toc a',
-                  '.modal-content',
-                  '.modal-header',
-                  '.modal-body',
-                  '.modal-dialog',
-                  '.modal.fade.in',
-                  '.modal-open',
-                  '/(#|\.)modal(\-[a-zA-Z]+)?/',
-                  '.navbar-toggle.open',
-                  '.fade .modal-dialog',
-                  '.navbar-collapse.in',
-                  '.navbar-fixed-top',
-                  '.logged-in .navbar-fixed-top',
-                  '.navbar-collapse',
-                  '.navbar-collapse.in',
-                  '.navbar-inverse .innovations.navbar-toggle.open',
-                  '.single-innovation .navbar-inverse .innovations.navbar-toggle.open',
-                  '#innovations.collapse.in',
-                  'ul.page-numbers li a.prev',
-                  '.open',
-                  '.open > .dropdown-menu',
-                  '.open > a',
-                  '.alert-danger',
-                  '.visible-xs',
-                  '.noscript-warning',
-                  '.close',
-                  '.alert-dismissible',
-                  '.page.calendar .events .panel:hover .fa-angle-down.open',
-                  '.fa-angle-down.open' ],
-              media: ['(min-width: 320px) handheld and (orientation: landscape)'],
-              ignoreSheets: ['/fonts.googleapis/'],
-              dest: 'assets/css/<%= pkg.name %>-style.css',
-              options: {
-                  report: 'gzip'
-              }
-          }
-      },
+
 
       // minify js
       uglify: {
@@ -193,7 +134,7 @@ module.exports = function(grunt) {
           },
           dist: {
               files: {
-                  'assets/js/<%= pkg.name %>-components.min.js': ['<%= concat.js.dest %>']
+                  'assets/js/concat-app.min.js': ['assets/js/concat-app.js']
               }
           }
       },
@@ -237,8 +178,6 @@ module.exports = function(grunt) {
     },
 
 
-
-
       // pug
       pug: {
           compile: {
@@ -256,9 +195,6 @@ module.exports = function(grunt) {
               }]
           }
       },
-
-
-
 
       // watch
     watch: {
@@ -280,11 +216,11 @@ module.exports = function(grunt) {
         tasks: ['imagemin'] //
       },
       css: {
-        files: ['app/assets/sass/components/*.{sass,scss}','app/assets/sass/*.{sass,scss}', 'bower_components/bootstrap/less/*.less', 'bower_components/bootstrap/less/mixins/*.less' ],
-        tasks: ['less-compile','sass',  'concat', 'autoprefixer', 'cssmin', 'uncss', 'csscomb', 'csslint'] //
+        files: ['app/assets/stylus/*.styl', 'app/blocks/**/*.styl '],
+        tasks: ['stylus',  'concat', 'autoprefixer', 'cssmin', 'csscomb', 'csslint'] //
       },
       pug: {
-        files: 'app/views/**/*.pug',
+        files: ['app/views/**/*.pug', 'app/blocks/**/*.pug'],
         tasks: ['pug']
       }
     },
@@ -321,7 +257,7 @@ module.exports = function(grunt) {
 
     // jshint
     jshint: {
-      files: ['Gruntfile.js', 'server.js', 'app/**/*.js'],
+      files: ['Gruntfile.js', 'server.js', 'app/assets/js/app.js'],
       options: {
         globals: {
           jQuery: true,
@@ -373,21 +309,23 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    //grunt.loadNpmTasks('grunt-contrib-less');
+    //grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    //grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-banner');
+    //grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-livereload');
+    grunt.loadNpmTasks('grunt-combine-media-queries');
     grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-stylus');
 
 
 
@@ -396,8 +334,8 @@ module.exports = function(grunt) {
     grunt.registerTask('lint', ['jshint']);
 
     // default task
-    grunt.registerTask('default', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'csscomb', 'csslint']);
-    grunt.registerTask('server', ['clean', 'pug', 'sass', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
+    grunt.registerTask('default', ['clean', 'pug', 'stylus', 'cmq', 'concat', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'csscomb', 'csslint', 'jshint']);
+    grunt.registerTask('server', ['clean', 'pug', 'stylus', 'concat', 'autoprefixer', 'cssmin', 'uncss', 'uglify', 'imagemin', 'htmlmin']);
 
 };
 //

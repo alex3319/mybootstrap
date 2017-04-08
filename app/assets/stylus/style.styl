@@ -1,0 +1,46 @@
+$color = #f0f
+$tablet-widths = '(min-width: 768px)'
+$desktop-widths = '(min-width: 1200px)'
+.menu
+  &_params
+    float: left
+    font-size: 0
+    padding: 0
+    margin-left: 133px
+  &__node
+    &_params
+      display: inline-block
+      margin-top: 20px
+      margin-left: 25px
+      margin-right: 25px
+      font-size: 20px
+      list-style-type: none
+  &__link
+    &_params
+      color: $color
+
+    @media $tablet-widths
+      color: #f9f
+
+
+$container
+  width: 320px
+  margin: 0 auto
+
+
+  @media $tablet-widths
+    width: 640px
+
+  @media $desktop-widths
+           width: 961px
+
+
+
+@media $tablet-widths
+         .wrappers
+           @extend $container
+           height: 155px
+
+
+
+
