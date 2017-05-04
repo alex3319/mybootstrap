@@ -1,5 +1,119 @@
 extends templates/layout.pug
 block content
-  include ../blocks/pages-header/pages-header
+  //include ../blocks/pages-header/pages-header
+  // Wrapper Link
+  header.pages-header
+    a(href="/").pages-header__logo
+    .pages-header__contacts
+      .navigation
+        .burger_deluxe
+          span.burger_global.top_bun
+          span.burger_global.patty
+          span.burger_global.bottom_bun
+      a(href="tel: 8-918-373-66-99") Доставка: 8-918-373-66-99
+
+
+  .overlay
+      nav.menu.menu_params
+        ul
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params(target='_blank', href='/') Главная
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params(target='_blank', href='/') Новости и акции
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params(target='_blank', href='/') Контакты
+
+        ul.menu__social_params
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params.menu__link_social(href='https://vk.com/', target='_blank')
+              img.menu__link_img(src='assets/img/soc_vk.png', alt='')
+              span Группа Вконтакте
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params.menu__link_social(href='https://www.facebook.com/', target='_blank')
+              img.menu__link_img(src='assets/img/soc_fb.png', alt='')
+              span Группа Фейсбук
+          li.menu__node.menu__node_params
+            a.menu__link.menu__link_params.menu__link_social(href='https://www.instagram.com/', target='_blank')
+              img.menu__link_img(src='assets/img/soc_insta.png', alt='')
+              span МЫ в INSTAGRAMM
+
+
+
+
+  .slider
+    .flexslider
+      ul.slides
+        li.flex-active-slide(style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;')
+          img(src='/assets/img/slide1.png', alt='', title='', draggable='false')
+        li.flex-active-slide(style='width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;')
+          img(src='/assets/img/slide2.png', alt='', title='', draggable='false')
+      ol.flex-control-nav.flex-control-paging
+      ul.flex-direction-nav
+        li.flex-nav-prev
+          a.flex-prev.flex-disabled(href='#', tabindex='-1') Previous
+        li.flex-nav-next
+          a.flex-next.flex-disabled(href='#', tabindex='-1') Next
+
+
+  hr.line.line_params.line_margins
+
+  .content
+    h1 Магазин товары для животных "Счастливые лапки"
+    p  На прилавках нашего зоомагазина множество товаров для ваших любимцев. Опытные продавцы с удовольствием помогут подобрать корма и аксессуары для домашних питомцев.
+      |В ассортименте магазина корма для кошек и собак известных торговых марок: Acana, Bosch, Royal Canin, Eukanuba, ProNature, 1stChoiсe, ProPlan, Grandorf и др. Так же у нас вы найдете средства для ухода за шерстью, витамины, когтеточки, игрушки, поводки и ошейники, миски,клетки, лежаки, домики, лотки, наполнители и другие товары для ваших домашних животных. Широкий выбор товаров для мелких домашних животных: грызунов, черепах, а также аксессуары для содержания птиц. Если вы являетесь владельцем или только собираетесь приобрести питомца, приглашаем за покупками в зоомагазин "Счастливые лапки". Мы находимся в г. Ейск, Краснодарского края на ул. Коммунистической, 81. Т/к "Жемчужина".
+    br
+    img.banner(src="/assets/img/banner.png")
+
+
+
+  .goods.clearfix
+    h2 Товары
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/1.png")
+        p Для собак
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/2.png")
+        p Для кошек
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/3.png")
+        p Для птиц
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/4.png")
+        p Для грызунов
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/5.png")
+        p Для рыб
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/6.png")
+        p Для черепах
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/7.png")
+        p Для хорьков
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/8.png")
+        p Уход и гигиена
+    .goods__item
+      a(href="#")
+        img(src="/assets/img/9.png")
+        p Акции
+
+
+  footer
+    .footer
+      .footer__logo
+      .footer__address.clear
+        p г.Ейск&nbspул.Коммунистическая 81 ТЦ&nbsp«Жемчужина»
+          br
+          | Доставка по телефону: 8-918-373-66-99
+
+
 
 

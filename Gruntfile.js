@@ -82,7 +82,9 @@ module.exports = function(grunt) {
         },
         src: [
           'app/lib/js/html5shiv.min.js',
-          'app/assets/js/app.js'
+          'app/assets/js/app.js',
+          'app/assets/js/flexslider.js',
+          'app/assets/js/script.js'
         ],
         dest: 'assets/js/concat-app.js'
       },

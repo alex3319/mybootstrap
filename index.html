@@ -5,16 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Стартовый шаблон</title>
-    <link href="assets/css/normalize.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
   </head>
   <body>
+    <!--include ../blocks/pages-header/pages-header-->
+    <!-- Wrapper Link-->
     <header class="pages-header"><a class="pages-header__logo" href="/"></a>
-      <div class="pages-header__contacts">Доставка: 8-918-373-66-99</div>
+      <div class="pages-header__contacts">
+        <div class="navigation">
+          <div class="burger_deluxe"><span class="burger_global top_bun"></span><span class="burger_global patty"></span><span class="burger_global bottom_bun"></span></div>
+        </div><a href="tel: 8-918-373-66-99">Доставка: 8-918-373-66-99</a>
+      </div>
     </header>
+    <div class="overlay">
+      <nav class="menu menu_params">
+        <ul>
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params" target="_blank" href="/">Главная</a></li>
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params" target="_blank" href="/">Новости и акции</a></li>
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params" target="_blank" href="/">Контакты</a></li>
+        </ul>
+        <ul class="menu__social_params">
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params menu__link_social" href="https://vk.com/" target="_blank"><img class="menu__link_img" src="assets/img/soc_vk.png" alt=""><span>Группа Вконтакте</span></a></li>
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params menu__link_social" href="https://www.facebook.com/" target="_blank"><img class="menu__link_img" src="assets/img/soc_fb.png" alt=""><span>Группа Фейсбук</span></a></li>
+          <li class="menu__node menu__node_params"><a class="menu__link menu__link_params menu__link_social" href="https://www.instagram.com/" target="_blank"><img class="menu__link_img" src="assets/img/soc_insta.png" alt=""><span>МЫ в INSTAGRAMM</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="slider">
+      <div class="flexslider">
+        <ul class="slides">
+          <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"><img src="/assets/img/slide1.png" alt="" title="" draggable="false"></li>
+          <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"><img src="/assets/img/slide2.png" alt="" title="" draggable="false"></li>
+        </ul>
+        <ol class="flex-control-nav flex-control-paging"></ol>
+        <ul class="flex-direction-nav">
+          <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li>
+          <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="line line_params line_margins">
+    <div class="content">
+      <h1>Магазин товары для животных "Счастливые лапки"</h1>
+      <p>
+         На прилавках нашего зоомагазина множество товаров для ваших любимцев. Опытные продавцы с удовольствием помогут подобрать корма и аксессуары для домашних питомцев.В ассортименте магазина корма для кошек и собак известных торговых марок: Acana, Bosch, Royal Canin, Eukanuba, ProNature, 1stChoiсe, ProPlan, Grandorf и др. Так же у нас вы найдете средства для ухода за шерстью, витамины, когтеточки, игрушки, поводки и ошейники, миски,клетки, лежаки, домики, лотки, наполнители и другие товары для ваших домашних животных. Широкий выбор товаров для мелких домашних животных: грызунов, черепах, а также аксессуары для содержания птиц. Если вы являетесь владельцем или только собираетесь приобрести питомца, приглашаем за покупками в зоомагазин "Счастливые лапки". Мы находимся в г. Ейск, Краснодарского края на ул. Коммунистической, 81. Т/к "Жемчужина".</p><br><img class="banner" src="/assets/img/banner.png">
+    </div>
+    <div class="goods clearfix">
+      <h2>Товары</h2>
+      <div class="goods__item"><a href="#"><img src="/assets/img/1.png">
+          <p>Для собак</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/2.png">
+          <p>Для кошек</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/3.png">
+          <p>Для птиц</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/4.png">
+          <p>Для грызунов</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/5.png">
+          <p>Для рыб</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/6.png">
+          <p>Для черепах</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/7.png">
+          <p>Для хорьков</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/8.png">
+          <p>Уход и гигиена</p></a></div>
+      <div class="goods__item"><a href="#"><img src="/assets/img/9.png">
+          <p>Акции</p></a></div>
+    </div>
+    <footer>
+      <div class="footer">
+        <div class="footer__logo"></div>
+        <div class="footer__address clear">
+          <p>г.Ейск&nbspул.Коммунистическая 81 ТЦ&nbsp«Жемчужина»<br>Доставка по телефону: 8-918-373-66-99</p>
+        </div>
+      </div>
+    </footer>
     <!-- build:js assets/js/bootstrap-grunt-sass-pug-components.min.js-->
     <script src="//localhost:35729/livereload.js"></script>
     <!--script(src='../bower_components/jquery/dist/jquery.js')-->
-    <script src="assets/js/bootstrap-grunt-sass-pug-components.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="/assets/js/concat-app.js"></script>
   </body>
 </html>
